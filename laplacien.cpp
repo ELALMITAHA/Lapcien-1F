@@ -1,7 +1,5 @@
 #include "laplacien.hpp"
 
-
-
 //--------------------------------------------------------------------//
 //***************Constructeur ****************************************//
 //Argument d'entrer :xmin borne inf  du domaine 
@@ -18,7 +16,6 @@ laplacien1d::laplacien1d(double xmin,double xmax,int monN){
 	 N=monN;
 	 h=(xmax-xmin)/(N+1);
 }
-
 
 //----------------------------------------------------------------------//
 //**************************** Matrice du laplacien*********************//
@@ -43,8 +40,6 @@ void laplacien1d::Matlaplacien(){
 	A=(1/pow(h,2))*A;
 }
 
-
-
 //-----------------------------------------------------------------------//
 //******************Second Membre ***************************************//
 //Argument d'entrer  :Void 
@@ -63,13 +58,14 @@ void   laplacien1d::Termesource(){
 		F(i)=(-pow(X(i+1),2)+5*X(i+1)-4)*exp(-X(i+1));
 	}
 }
+
 //------------------------------------------------------------------------//
 //****************Méthode du gradient conjugué****************************//
 //Argument d'entrer  :Void 
 //Argument de sortie :Void 
 //------------------------------------------------------------------------//
 
-/*void laplacien1d::gradientconj(){
+void laplacien1d::gradientconj(){
 
 	U.resize(N-1);
 	for(int i(0);i<N-1;++i)
@@ -93,10 +89,7 @@ void   laplacien1d::Termesource(){
 		r=r1;
 	}
 	cout<<U<<endl;
-
-
 }
-*/
 
 //******************Solveur directe pour AU=F ****************************//
 //Arguement d'entrer : A Matrice du problème (A doit etre inversible )
@@ -149,8 +142,6 @@ void laplacien1d:: Save(std::string solution ){
                 cerr << "Erreur à l'ouverture !" << endl;
   }
 
-
-
   //-----------------------------------------------------------------------//
   //***************Calcule de l'erreur de convergence**********************//
   //-----------------------------------------------------------------------//
@@ -173,8 +164,6 @@ void laplacien1d:: Save(std::string solution ){
 //Argument de sortie: instant final 
 //la fonction affiche le temps que s'est écoulé entre les deux          
 //------------------------------------------------------------------------//
-
-
 
 void laplacien1d::duree(time_t _begin, time_t _end) 
 {
